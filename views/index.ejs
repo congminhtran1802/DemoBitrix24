@@ -1,11 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= title %></title>
+    <title>List User</title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1>List User</h1>
+    <!-- button refesh user -->
+    <button onclick="window.location.href='/'">Refresh</button>
+    <button onclick="viewEmployee()">View Employee</button>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Gender</th>
+      </tr>
+      <tbody>
+        <% users.forEach(function(user) { %>
+          <tr onclick="highlightRow(this)" user-id="<%= user.ID %>">
+            <td><%= user.NAME %></td>
+            <td><%= user.LAST_NAME %></td>
+            <td><%= user.EMAIL %></td>
+            <td><%= user.PERSONAL_GENDER %></td>
+          </tr>
+        <% }); %>
+      </tbody>
+    </table>
+    <script src="/javascripts/highlight.js"></script>
+    <script>
+      function viewEmployee() {
+        const highlightedId = getHighlightedId();
+        if (highlightedId) {
+          // Điều hướng đến route để xem chi tiết nhân viên
+          window.location.href = `/user/${highlightedId}`;
+        } else {
+          alert('Please select an employee.');
+        }
+      }
+    </script>
   </body>
 </html>
