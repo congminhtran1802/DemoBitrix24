@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Contact List</title>
+</head>
+<body>
+  <h1>Contact List</h1>
+  <a href="/contacts/create">Add New Contact</a>
+  <table>
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Website</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% if (contacts && contacts.length > 0) { %>
+        <% contacts.forEach(contact => { %>
+          <tr>
+            <td><%= contact.NAME %></td>
+            <td><%= contact.ADDRESS || 'N/A' %></td>
+            <td>
+              <% if (contact.PHONE && contact.PHONE.length > 0) { %>
+                <%= contact.PHONE.map(phone => phone.VALUE).join(', ') %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+            <td>
+              <% if (contact.EMAIL && contact.EMAIL.length > 0) { %>
+                <%= contact.EMAIL.map(email => email.VALUE).join(', ') %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+            <td>
+              <% if (contact.WEB && contact.WEB.length > 0) { %>
+                <%= contact.WEB.map(web => web.VALUE).join(', ') %>
+              <% } else { %>
+                N/A
+              <% } %>
+            </td>
+            <td>
+              <a href="/contacts/edit/<%= contact.ID %>">Edit</a>
+              <a href="/contacts/delete/<%= contact.ID %>">Delete</a>
+            </td>
+          </tr>
+        <% }); %>
+      <% } else { %>
+        <tr>
+          <td colspan="6">No contacts found</td>
+        </tr>
+      <% } %>
+    </tbody>
+  </table>
+</body>
+</html>
