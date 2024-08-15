@@ -13,6 +13,11 @@
 - test.js nhận sự kiện install/reinstall
 - lưu accesstoken, refreshtoken vào file tokens.json
 - contact.js api CRUD contact, refreshtoken
+# chạy dự án
+- npm start
+- mở ngrok nhập " ngrok http 3000"
+- mở link ngrok cung cấp và cài đặt vào bitrix24 thêm endpoint /test/install
+- lưu để install hoặc reinstall
 # tài liệu tham khảo
 - https://training.bitrix24.com/rest_help/crm/contacts/index.php
 - https://training.bitrix24.com/rest_help/oauth/refreshing.php
